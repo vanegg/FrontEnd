@@ -1,0 +1,46 @@
+.container {
+  margin: 0 auto;
+  width: 750px;
+}
+
+header {
+  background-color: black;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+.main-title {
+  text-align: center;
+}
+
+#pricing1 {
+  float: left;
+  width: 36%;
+}
+
+#pricing2 {
+  float: right;
+}
+
+#pricing2-1 {
+  float: left;
+}
+
+#pricing2-2 {
+  float: right;
+}
+
+#about {
+  clear: both;
+}
+
+h5 {
+  text-align: center;
+}
+
+ul > li {
+  list-style-type: square;
+}
