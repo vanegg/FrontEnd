@@ -1,0 +1,59 @@
+.container {
+  margin: 0 auto;
+  width: 750px;
+}
+
+header {
+  background-color: black;
+  clear: both;
+}
+
+#intro, #turtles, #rails {
+  display:inline-block;
+  margin-bottom: 50px;
+}
+
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+
+.main-title {
+  text-align: center;
+}
+
+#intro-text{
+  float: left;
+  width: 50%;
+}
+
+#intro-img {
+  float: right;
+  margin-top: 60px;
+}
+
+#turtles-text {
+  clear: both;
+  float: right;
+  width: 50%;
+}
+
+#turtles-img {
+  float: left;
+  margin-top: 30px;
+}
+
+#rails-text {
+  clear: both;
+  float: left;
+  width: 50%;
+}
+
+#rails-img {
+  float: right;
+  margin-top: 60px;
+}
+
+#pricing {
+  clear: both;
+}
