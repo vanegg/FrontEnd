@@ -33,12 +33,22 @@ nav > ul > li:first-child {
   border-radius: 8px 0px 0px 8px; 
 }
 
-.submenu {
+li:last-child {
+  border-radius: 0px 8px 8px 0px;  
+}
+
+a {
+  list-style-type: none;
+  text-decoration: none;
+  color: black;
+}
+
+.submenu, .submenu2{
   display: none;
   /*visibility: hidden;*/
 }
 
-.submenu > li {
+.submenu > li, .submenu2 > li {
   width: 100px;
   display: block;  
 }
@@ -49,12 +59,9 @@ nav > ul > li:first-child {
   position:absolute;
   display: block;  
 }
-li:last-child {
-  border-radius: 0px 8px 8px 0px;  
-}
-
-a {
-  list-style-type: none;
-  text-decoration: none;
-  color: black;
+ .submenu2:hover, #second:hover + .submenu2{
+  /*visibility: visible;*/
+  margin-left: 84px;
+  position:absolute;
+  display: block;  
 }
