@@ -22,8 +22,8 @@ nav {
 
 ul {
   padding-top: 9px;
-  padding-left: 35px;
-  padding-right: 35px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 li {
@@ -31,8 +31,8 @@ li {
 }
 
  a{
-  padding-right: 60px;
-  padding-left: 60px;
+  padding-right: 20px;
+  padding-left: 20px;
   list-style-type: none;
   text-decoration: none;
   color: #FFFFFF;
