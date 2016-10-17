@@ -1,0 +1,40 @@
+.container {
+  margin: 0 0 0 150px;
+  max-width: 720px;
+  padding-left:20px;
+}
+
+nav {
+position: fixed;
+float: left;
+margin-left: -170px;
+margin-top: -80px;
+background-color: #D8D8D8;
+border-right-width: 2px;
+height: 100%;
+}
+
+ul {
+	display: block;
+	padding: 0px;
+	margin: 0px;
+}
+
+li {
+	
+	display: block;
+	list-style-type: none;
+	width: 150px;
+	padding: 10px 0px 5px 5px;
+	border-bottom: 1px solid;
+}
+
+a {
+	 text-decoration: none;
+	 color: black;
+	 font-size: 18px;
+}
+
+.content {
+	float: right;
+}
