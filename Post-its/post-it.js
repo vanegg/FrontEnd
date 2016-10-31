@@ -5,7 +5,7 @@ var Board = function( selector, name ) {
   // De esta manera no dependerás tanto de tu HTML.  
   this.name = name;
   this.color = random_color();
-  this.li_html = '<li><a href="#b_' + num_board + '">'+ this.name +'</a></li>';
+  this.li_html = '<li class="link_board" id= "lb_' + num_board + '"><a href="#b_' + num_board + '">'+ this.name +'</a></li>';
   this.board_html = '<div class="board" id="b_' + num_board + '"></div>';
   this.postits = [];
   var $elem = $("#b_" + num_board);
@@ -74,7 +74,6 @@ function create_board(name){
   $('#boards').append(board.li_html);
   $('.board_section').append(board.board_html);
   $('#b_' + num_board).css('background-color', board.color);
-  $('#b_' + num_board).css('zindex', board.color);
 }
 
 function set_position(x,y){
