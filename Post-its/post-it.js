@@ -13,6 +13,7 @@ var Board = function( name ) {
 
 var PostIt = function() {
   // Aquí va el código relacionado con un post-it
+  this.id = num_postit;
   this.postit_html = '<div id="p_'+ num_postit +'" class="post-it draggable ui-draggable"><div class="header"><div class="close">X</div></div><div class="content" contenteditable="true">...</div></div>';
 };
 
@@ -31,12 +32,12 @@ $(function() {
     e.stopPropagation();
   });
 
-  $(".board").on("mousedown", '.close', function(e) {
+  $(".board_section").on("mousedown", '.close', function(e) {
     e.stopPropagation();
     $(this).parent().parent().remove();
   });
 
-  $('.board').on("mousedown", '.post-it', function() {
+  $('.board_section').on("mousedown", '.post-it', function() {
     $(this).parent().append(this);
   });
 
@@ -44,17 +45,15 @@ $(function() {
     event.preventDefault();
     id = $($(this)[0]).attr('id');
     $board = $('#' + id + '.board');
-    console.log(id);
     $('.board_section').append($board);
   });
 
   $('.board_section').on('dblclick', function(event){
       event.stopPropagation();
-      console.log($(this).find('div:last-child').attr('id'));
-      postit = create_postit(event.pageX, event.pageY,num_board);
-      index = $elem.selector.substring(3,4);
+      index = parseInt($(this).find('div.board:last-child').attr('id').substring(2,3));
+      postit = create_postit(event.pageX, event.pageY,index);
       boards[parseInt(index)-1].postits.push(postit);
-    });
+  });
 
 });
 
@@ -69,7 +68,6 @@ function do_draggable(){
 function create_postit(x,y,b_index){
   num_postit ++;
   postit = new PostIt();
-  // console.log('#b_' + (b_index) +'.board');
   $('#b_' + b_index +'.board').append(postit.postit_html);
   set_position(x,y);
   do_draggable();
