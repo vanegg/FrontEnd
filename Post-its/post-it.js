@@ -1,24 +1,14 @@
-var Board = function( selector, name ) {
+var Board = function( name ) {
   // Aqui denerá ir el código que tenga que ver con tu tablero 
   
   // Utiliza esta sintaxis para referirte al selector que representa al tablero.
   // De esta manera no dependerás tanto de tu HTML.  
   this.name = name;
   this.color = random_color();
-  this.li_html = '<li class="link_board" id= "lb_' + num_board + '"><a href="#b_' + num_board + '">'+ this.name +'</a></li>';
-  this.board_html = '<div class="board" id="b_' + num_board + '"></div>';
   this.postits = [];
-  var $elem = $("#b_" + num_board);
-  
-  function initialize() {
-    // Que debe de pasar cuando se crea un nuevo tablero?
-    $elem.on('dblclick', function(event){
-      $elem.postits.push(create_postit(event.pageX, event.pageY));
-    });
-   
-  };
-
-  initialize();
+  this.li_html = '<li><a class="link_board" id= "b_' + num_board + '" href="#b_' + num_board + '">'+ this.name +'</a></li>';
+  this.board_html = '<div class="board" id="b_' + num_board + '"></div>';
+  $elem = $("#b_" + num_board + '.board');
 };
 
 var PostIt = function() {
@@ -30,13 +20,14 @@ $(function() {
   // Esta es la función que correrá cuando este listo el DOM 
   num_postit = 0;
   num_board = 0;
+  boards = [];
 
   $("#new_board").on("click",function(e) {
      var board_name = prompt("Please enter board's name", "New board");
-     create_board(board_name);
+     boards.push(create_board(board_name));
   });
 
-  $(".board").on("dblclick", '.post-it', function(e) {
+  $(".board_section").on("dblclick", '.post-it', function(e) {
     e.stopPropagation();
   });
 
@@ -47,7 +38,23 @@ $(function() {
 
   $('.board').on("mousedown", '.post-it', function() {
     $(this).parent().append(this);
-  });  
+  });
+
+  $('#boards').on("click", 'a.link_board' ,function(event) {
+    event.preventDefault();
+    id = $($(this)[0]).attr('id');
+    $board = $('#' + id + '.board');
+    console.log(id);
+    $('.board_section').append($board);
+  });
+
+  $('.board_section').on('dblclick', function(event){
+      event.stopPropagation();
+      console.log($(this).find('div:last-child').attr('id'));
+      postit = create_postit(event.pageX, event.pageY,num_board);
+      index = $elem.selector.substring(3,4);
+      boards[parseInt(index)-1].postits.push(postit);
+    });
 
 });
 
@@ -59,10 +66,11 @@ function do_draggable(){
   } );
 }
 
-function create_postit(x,y){
+function create_postit(x,y,b_index){
   num_postit ++;
   postit = new PostIt();
-  $('.board').append(postit.postit_html);
+  // console.log('#b_' + (b_index) +'.board');
+  $('#b_' + b_index +'.board').append(postit.postit_html);
   set_position(x,y);
   do_draggable();
   return postit;
@@ -70,10 +78,11 @@ function create_postit(x,y){
 
 function create_board(name){
   num_board ++
-  board = new Board('.board', name);
+  board = new Board(name);
   $('#boards').append(board.li_html);
   $('.board_section').append(board.board_html);
-  $('#b_' + num_board).css('background-color', board.color);
+  $('#b_' + num_board + '.board').css('background-color', board.color);
+  return board;
 }
 
 function set_position(x,y){
